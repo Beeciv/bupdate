@@ -1,0 +1,10 @@
+#!/bin/bash
+
+path="$HOME/.ruleset"
+echo "Placing rulesets at $path"
+
+freehome="$HOME/.freeciv"
+[ ! -d "$freehome" ] && mkdir "$freehome" && echo "Making Freeciv directory at $freehome"
+
+[ ! -d "$path" ] && mkdir "$path" && echo "Creating ruleset directory at $path"
+
