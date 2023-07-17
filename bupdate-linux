@@ -1,7 +1,7 @@
 #!/bin/bash
 
-fpath=`which freeciv`
-[ ! -d "$fpath" ] && echo "Freeciv not installed at $fpath. Auto-installer will not proceed." && exit(0)
+fpath="/usr/share/games/freeciv"
+[ ! -d "$fpath" ] && echo "Freeciv data directory not present at $fpath. Auto-installer will not proceed." && exit 0
 
-path = $fpath
+path="$fpath/willset"
 echo "Placing rulesets at $path"
