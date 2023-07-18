@@ -3,14 +3,17 @@
 fpath="/usr/share/games/freeciv"
 [ ! -d "$fpath" ] && echo "Freeciv data directory not present at $fpath. Is freeciv installed?" && exit 1
 
-# Ensure that WillsetMelee is present.
 if [[ (! -d "WillsetMelee/WillsetMelee") || (! -f "WillsetMelee/WillsetMelee.serv") ]]
 then
   echo "WillsetMelee not present/complete; ensure grab script has been run first."
   exit 1
 fi
 
-cd WillsetMelee
+if [[ (! -d "WillsetS/WillsetS") || (! -f "WillsetS/WillsetS.serv") ]]
+then
+  echo "WillsetS not present/complete; ensure grab script has been run first."
+  exit 1
+fi
 
 path="$fpath/willset"
 echo "Placing rulesets at $path"
