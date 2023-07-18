@@ -25,6 +25,11 @@ then
   exit 1
 fi
 
+# Copy
+target="/usr/share/games/freeciv"
+echo "Placing rulesets at $target"
 
-path="$fpath/willset"
-echo "Placing rulesets at $path"
+cp -r "$meleedir" "$target"
+cp -r "$meleeserv" "$target"
+cp -r "$stddir" "$target"
+cp -r "$stdserv" "$target"
