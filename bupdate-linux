@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 meleename="WillsetMelee"
 stdname="WillsetS"
