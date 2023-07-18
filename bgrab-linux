@@ -12,8 +12,6 @@ dir="$(basename $(pwd))"
 # Evaluate dependency: Git
 [ ! -f "$(which git)" ] && echo "Git not installed; please install before continuing." && exit 1 
 
-
-
 # WillsetMelee
 echo "----- CHECKING WILLSET MELEE -----"
 meleepath="$meleename"
