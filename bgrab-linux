@@ -25,17 +25,12 @@ fi
 
 # Standard Willset
 echo "----- CHECKING WILLSET STD -----"
-stdpath="$path/Willset"
+stdpath="$path/WillsetS"
 if [ ! -d "$stdpath/.git" ]
 then
-  git clone git@github.com:Beeciv/Willset.git
+  git clone git@github.com:Beeciv/WillsetS.git
 else
   cd $stdpath
   git pull
   cd $path
 fi
-
-# TODO:
-# Need to clone both repos.
-# Need to check if both repos exist
-# Then need to either clone or pull each.
