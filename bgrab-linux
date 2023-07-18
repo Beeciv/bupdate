@@ -6,34 +6,26 @@ stdname="WillsetS"
 # Evaluate dependency: Git
 [ ! -f "$(which git)" ] && echo "Git not installed; please install before continuing." && exit 1 
 
-fpath="$HOME/.freeciv"
-[ ! -d $fpath ] && echo "Creating Freeciv directory at $fpath" && mkdir "$fpath"
-
-path="$fpath/Willset"
-[ ! -d $path ] && echo "Creating Willset directory at $path" && mkdir "$path"
-
-cd $path
-
 # WillsetMelee
 echo "----- CHECKING WILLSET MELEE -----"
-meleepath="$path/$meleename"
+meleepath="$meleename"
 if [ ! -d "$meleepath/.git" ]
 then
   git clone "git@github.com:Beeciv/$meleename.git"
 else 
   cd $meleepath
   git pull
-  cd $path
+  cd ..
 fi
 
 # Standard Willset
 echo "----- CHECKING WILLSET STD -----"
-stdpath="$path/$stdname"
+stdpath="$stdname"
 if [ ! -d "$stdpath/.git" ]
 then
   git clone "git@github.com:Beeciv/$stdname.git"
 else
   cd $stdpath
   git pull
-  cd $path
+  cd ..
 fi
