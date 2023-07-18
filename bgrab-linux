@@ -1,5 +1,8 @@
 #!/bin/bash
 
+meleename="WillsetMelee"
+stdname="WillsetS"
+
 # Evaluate dependency: Git
 [ ! -f "$(which git)" ] && echo "Git not installed; please install before continuing." && exit 1 
 
@@ -13,10 +16,10 @@ cd $path
 
 # WillsetMelee
 echo "----- CHECKING WILLSET MELEE -----"
-meleepath="$path/WillsetMelee"
+meleepath="$path/$meleename"
 if [ ! -d "$meleepath/.git" ]
 then
-  git clone git@github.com:Beeciv/WillsetMelee.git
+  git clone "git@github.com:Beeciv/$meleename.git"
 else 
   cd $meleepath
   git pull
@@ -25,10 +28,10 @@ fi
 
 # Standard Willset
 echo "----- CHECKING WILLSET STD -----"
-stdpath="$path/WillsetS"
+stdpath="$path/$stdname"
 if [ ! -d "$stdpath/.git" ]
 then
-  git clone git@github.com:Beeciv/WillsetS.git
+  git clone "git@github.com:Beeciv/$stdname.git"
 else
   cd $stdpath
   git pull
