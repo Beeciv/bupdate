@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Evaluate dependency: Git
+[ ! -f "$(which git)" ] && echo "Git not installed; please install before continuing." && exit 1 
+
+fpath="$HOME/.freeciv"
+[ ! -d $fpath ] && echo "Creating Freeciv directory at $fpath" && mkdir "$fpath"
+
+path="$fpath/Willset"
+[ ! -d $path ] && echo "Creating Willset directory at $path" && mkdir "$path"
+
+cd $path
+
+# WillsetMelee
+echo "----- CHECKING WILLSET MELEE -----"
+meleepath="$path/WillsetMelee"
+if [ ! -d "$meleepath/.git" ]
+then
+  git clone git@github.com:Beeciv/WillsetMelee.git
+else 
+  cd $meleepath
+  git pull
+  cd $path
+fi
+
+# Standard Willset
+echo "----- CHECKING WILLSET STD -----"
+stdpath="$path/Willset"
+if [ ! -d "$stdpath/.git" ]
+then
+  git clone git@github.com:Beeciv/Willset.git
+else
+  cd $stdpath
+  git pull
+  cd $path
+fi
+
+# TODO:
+# Need to clone both repos.
+# Need to check if both repos exist
+# Then need to either clone or pull each.
