@@ -35,9 +35,8 @@ First, find a place to put bupdate.
 
 Then, execute `git clone git@github.com:Beeciv/bupdate.git`. This will create a new directory for the bupdate scripts. Note that this is also where the rulesets will be stored/updated before being copied.
 
-#### 3. Mark as executable.
+#### 3. Mark as executable
 Execute `chmod +x bupdate` and `chmod +x bgrab`.
-
 
 ## Usage:
 `./bgrab`
