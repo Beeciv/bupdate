@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+meleename="WillsetMelee"
+stdname="WillsetS"
+
+fpath="/usr/share/games/freeciv"
+[ ! -d "$fpath" ] && echo "Freeciv data directory not present at $fpath. Is freeciv installed?" && exit 1
+
+[ "$(id -u)" != "0" ] && echo "Please run as superuser or files cannot be copied!" && exit 1
+
+# Validation
+meleebase="WillsetMelee"
+meleedir="$meleebase/WillsetMelee"
+meleeserv="$meleebase/WillsetMelee.serv"
+if [[ (! -d $meleedir) || (! -f $meleeserv) ]]
+then
+  echo "$meleename not present/complete; ensure grab script has been run first."
+  exit 1
+fi
+
+stdbase="WillsetS"
+stddir="$stdbase/WillsetS"
+stdserv="$stdbase/WillsetS.serv"
+if [[ (! -d "$stddir") || (! -f "$stdserv") ]]
+then
+  echo "$stdname not present/complete; ensure grab script has been run first."
+  exit 1
+fi
+
+# Copy
+target="/usr/share/games/freeciv"
+echo "Placing rulesets at $target"
+
+cp -r "$meleedir" "$target"
+cp -r "$meleeserv" "$target"
+cp -r "$stddir" "$target"
+cp -r "$stdserv" "$target"
