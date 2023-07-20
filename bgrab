@@ -17,7 +17,7 @@ echo "----- CHECKING WILLSET MELEE -----"
 meleepath="$meleename"
 if [ ! -d "$meleepath/.git" ]
 then
-  git clone "git@github.com:Beeciv/$meleename.git"
+  git clone "https://github.com/Beeciv/$meleename.git"
 else 
   cd $meleepath
   git pull
@@ -29,7 +29,7 @@ echo "----- CHECKING WILLSET STD -----"
 stdpath="$stdname"
 if [ ! -d "$stdpath/.git" ]
 then
-  git clone "git@github.com:Beeciv/$stdname.git"
+  git clone "https://github.com/Beeciv/$stdname.git"
 else
   cd $stdpath
   git pull
