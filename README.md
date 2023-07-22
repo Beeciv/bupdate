@@ -18,7 +18,7 @@ Since the copying script writes outside of the user's home directory, it must be
 
 The ruleset repositories will be cloned in the directory you ran the script. In order to prevent accidentally clogging your home directory with Willset repos, the scripts will not function if they aren't run from a directory named "bupdate". 
 
-Note that bupdate works by copying files to the standard Freeciv data directory (i.e. /usr/share/games/freeciv), so if you have a non-standard install location, it won't work.
+Note that bupdate works by copying files to the standard Freeciv data directory (i.e. /usr/share/games/freeciv). If you have a non-standard install location, edit the bupdate script's $install variable at the top of the script to reflect your install path. 
 
 ## Dependencies:
  - Git

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# NOTE: TO CHANGE YOUR INSTALL DIRECTORY, CHANGE THIS VARIABLE!
+install="/usr/share/games/freeciv"
+
 meleename="WillsetMelee"
 stdname="WillsetS"
 
@@ -28,10 +31,9 @@ then
 fi
 
 # Copy
-target="/usr/share/games/freeciv"
-echo "Placing rulesets at $target"
+echo "Placing rulesets at $install"
 
-cp -r "$meleedir" "$target"
-cp -r "$meleeserv" "$target"
-cp -r "$stddir" "$target"
-cp -r "$stdserv" "$target"
+cp -r "$meleedir" "$install"
+cp -r "$meleeserv" "$install"
+cp -r "$stddir" "$install"
+cp -r "$stdserv" "$install"
