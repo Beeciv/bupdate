@@ -8,7 +8,10 @@ stdname="WillsetS"
 
 # Get install dirs from config file.
 installs=""
-read -r installs < <(grep -v "^#" $config)
+while read -r line; do
+  installs="$installs$line "
+done < <(grep -vE '^#|$#' $config)
+echo $installs
 
 for install in $installs
 do
@@ -28,14 +31,12 @@ function validate {
   fi
 }
 
-meleebase="WillsetMelee"
-meleedir="$meleebase/WillsetMelee"
-meleeserv="$meleebase/WillsetMelee.serv"
+meleedir="$meleename/$meleename"
+meleeserv="$meleename/$meleename.serv"
 validate $meleedir $meleeserv $meleename
 
-stdbase="WillsetS"
-stddir="$stdbase/WillsetS"
-stdserv="$stdbase/WillsetS.serv"
+stddir="$stdname/WillsetS"
+stdserv="$stdname/WillsetS.serv"
 validate $stddir $stdserv $stdname
 
 # Copy
