@@ -6,28 +6,39 @@ install="/usr/share/games/freeciv"
 meleename="WillsetMelee"
 stdname="WillsetS"
 
+# Get install dirs from config file.
+installs=""
+input="installdirs"
+read -r installs < <(tail -n "+2" $input)
+echo $installs
+
 [ ! -d "$install" ] && echo "Freeciv data directory not present at $install. Is freeciv installed?" && exit 1
 
 [ "$(id -u)" != "0" ] && echo "Please run as superuser or files cannot be copied!" && exit 1
 
 # Validation
+
+
+# $1: directory
+# $2: serv file
+# $3: name
+function validate {  
+  if [[ (! -d "$1") || (! -f "$2") ]]
+  then
+    echo "$3 not present/complete; ensure grab script has been run first."
+    exit 1
+  fi
+}
+
 meleebase="WillsetMelee"
 meleedir="$meleebase/WillsetMelee"
 meleeserv="$meleebase/WillsetMelee.serv"
-if [[ (! -d $meleedir) || (! -f $meleeserv) ]]
-then
-  echo "$meleename not present/complete; ensure grab script has been run first."
-  exit 1
-fi
+validate $meleedir $meleeserv $meleename
 
 stdbase="WillsetS"
 stddir="$stdbase/WillsetS"
 stdserv="$stdbase/WillsetS.serv"
-if [[ (! -d "$stddir") || (! -f "$stdserv") ]]
-then
-  echo "$stdname not present/complete; ensure grab script has been run first."
-  exit 1
-fi
+validate $stddir $stdserv $stdname
 
 # Copy
 echo "Placing rulesets at $install"
