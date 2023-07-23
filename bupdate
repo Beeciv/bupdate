@@ -6,8 +6,7 @@ install="/usr/share/games/freeciv"
 meleename="WillsetMelee"
 stdname="WillsetS"
 
-fpath="/usr/share/games/freeciv"
-[ ! -d "$fpath" ] && echo "Freeciv data directory not present at $fpath. Is freeciv installed?" && exit 1
+[ ! -d "$install" ] && echo "Freeciv data directory not present at $install. Is freeciv installed?" && exit 1
 
 [ "$(id -u)" != "0" ] && echo "Please run as superuser or files cannot be copied!" && exit 1
 
