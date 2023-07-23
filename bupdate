@@ -25,17 +25,15 @@ stddir="$stdname/WillsetS"
 stdserv="$stdname/WillsetS.serv"
 validate $stddir $stdserv $stdname
 
-[ "$(id -u)" != "0" ] && echo "Please run as superuser or files cannot be copied!" && exit 1
-
 # Copies to all present install directories.
 # In order to simplify program logic, just ignores not-present directories.
 while read -r line; do
   if [ -d $line ]; then  
-    echo "Placing installs in $install"
-    cp -r "$meleedir" "$install"
-    cp -r "$meleeserv" "$install"
-    cp -r "$stddir" "$install"
-    cp -r "$stdserv" "$install"
+    echo "Placing installs in $line"
+    cp -r "$meleedir" "$line"
+    cp -r "$meleeserv" "$line"
+    cp -r "$stddir" "$line"
+    cp -r "$stdserv" "$line"
   else
     echo "Install directory $line not present; not copying here."
   fi
