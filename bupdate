@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 
-# NOTE: TO CHANGE YOUR INSTALL DIRECTORY, CHANGE THIS VARIABLE!
-install="/usr/share/games/freeciv"
-
+config="installdirs" # PATH TO INSTALL FILES LIST.
 meleename="WillsetMelee"
 stdname="WillsetS"
 
-# Get install dirs from config file.
-installs=""
-input="installdirs"
-read -r installs < <(tail -n "+2" $input)
-echo $installs
-
-[ ! -d "$install" ] && echo "Freeciv data directory not present at $install. Is freeciv installed?" && exit 1
-
 [ "$(id -u)" != "0" ] && echo "Please run as superuser or files cannot be copied!" && exit 1
 
-# Validation
+# Get install dirs from config file.
+installs=""
+read -r installs < <(grep -v "^#" $config)
 
+for install in $installs
+do
+  [ ! -d $install ] && echo "Freeciv data directory not present at $install. Is freeciv installed?" && exit 1
+done
+
+# Validation
 
 # $1: directory
 # $2: serv file
@@ -41,9 +39,12 @@ stdserv="$stdbase/WillsetS.serv"
 validate $stddir $stdserv $stdname
 
 # Copy
-echo "Placing rulesets at $install"
+for install in $installs
+do
+  echo "Placing installs in $install"
+  cp -r "$meleedir" "$install"
+  cp -r "$meleeserv" "$install"
+  cp -r "$stddir" "$install"
+  cp -r "$stdserv" "$install"
+done
 
-cp -r "$meleedir" "$install"
-cp -r "$meleeserv" "$install"
-cp -r "$stddir" "$install"
-cp -r "$stdserv" "$install"
