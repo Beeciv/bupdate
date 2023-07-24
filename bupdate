@@ -27,8 +27,8 @@ validate $stddir $stdserv $stdname
 
 # Copies to all present install directories.
 # In order to simplify program logic, just ignores not-present directories.
-while read -r line; do
-  if [ -d $line ]; then  
+while IFS="" read -r line; do
+  if [[ -d $line ]]; then  
     echo "Placing installs in $line"
     cp -r "$meleedir" "$line"
     cp -r "$meleeserv" "$line"
