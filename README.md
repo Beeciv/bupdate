@@ -4,8 +4,6 @@ Bupdate is a collection of scripts for automatically updating the Willset rulese
   
 As always, playing on williserver does not require the rulesets as they are stored on the server-side; however, having the rulesets up-to-date on your machine ensures that you can easily experiment with new changes outside of official games.  
   
-Currently I've completed scripts for Linux environments, but I plan to imminently release a Windows version.  
-  
 ### Implementation  
   
 Bupdate is two very simple scripts.  
